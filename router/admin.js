@@ -108,4 +108,29 @@ app.post("/auth", async (req,res) => {
     }
 })
 
+app.get("/detail/tang/semua", async (req, res) =>{
+   
+    let result = await admin.findAll({
+        
+        include: [
+            "tanggapan", 
+            {
+                model: models.tanggapan,
+                as : "pengaduan",
+                include: ["pengaduan"]
+            }
+        ]
+            
+    })
+
+  
+
+    res.json(result)
+})
+
+
+
+
+
+
 module.exports = app

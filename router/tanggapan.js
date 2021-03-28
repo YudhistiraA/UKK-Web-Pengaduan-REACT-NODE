@@ -22,6 +22,15 @@ app.get("/detail", async (req, res) =>{
     res.json(result)
 })
 
+
+
+
+
+
+
+
+
+
 app.put("/", auth, async(req, res) => {
     let param = { id_tanggapan: req.body.id_tanggapan}
     let data = {
@@ -104,6 +113,8 @@ app.post("/",(req, res) => {
         })
     })
 })
+
+
 
 
 

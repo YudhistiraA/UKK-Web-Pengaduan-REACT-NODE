@@ -32,8 +32,8 @@ module.exports = (sequelize, DataTypes) => {
 
  tanggapan.associate = (models) => {
      
-    tanggapan.belongsTo(models.pengaduan,{foreignKey: "id_pengaduan", as: "pengaduan"})}
-  
+    tanggapan.belongsTo(models.pengaduan,{foreignKey: "id_pengaduan", as: "pengaduan"})
+    tanggapan.belongsTo(models.admin,{foreignKey: "id_petugas", as: "petugas"})}
   return tanggapan;
 
 };

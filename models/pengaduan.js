@@ -30,8 +30,10 @@ module.exports = (sequelize, DataTypes) => {
     tableName: "pengaduan"
   });
 
-   
-
+  pengaduan.associate = (models) => {
+     
+   pengaduan.hasMany(models.tanggapan,{foreignKey: "id_pengaduan", as: "tanggapan"})
+   }
 
   return pengaduan;
 };

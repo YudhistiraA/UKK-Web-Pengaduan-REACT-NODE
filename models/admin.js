@@ -29,5 +29,11 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'admin',
     tableName: 'petugas'
   });
+
+
+ admin.associate = (models) => {
+     
+   admin.belongsTo(models.tanggapan,{foreignKey: "id_petugas", as: "tanggapan"})}
+
   return admin;
 };

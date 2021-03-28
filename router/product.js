@@ -8,6 +8,7 @@ const path = require("path")
 const fs = require("fs")
 
 const auth = require("../auth")
+const tanggapan = require("../models/tanggapan")
 app.use(auth)
 
 
@@ -153,5 +154,53 @@ app.get("/get/:nik", async (req, res) =>{
     })
     res.json(result)
 })
+app.get("/detail/tang", async (req, res) =>{
+    let result = await product.findAll({
+         include: [{ model: models.tanggapan, as: "tanggapan",
+        
+            }],
+            
+    })
 
+  
+console.log(result)
+    res.json(result)
+})
+
+app.get("/detail/tang/:nik", async (req, res) =>{
+    let param = { nik: req.params.nik}
+    let result = await product.findAll({
+        where:param,
+         include: [{ model: models.tanggapan, as: "tanggapan",
+        
+            }],
+            
+    })
+
+  
+
+    res.json(result)
+})
+
+
+
+app.get("/detail/tang/semua", async (req, res) =>{
+   
+    let result = await product.findAll({
+        
+        include: [
+            "pet", 
+            {
+                model: models.petugas,
+                as : "petugas",
+                include: ["petugas"]
+            }
+        ]
+            
+    })
+
+  
+
+    res.json(result)
+})
 module.exports = app
